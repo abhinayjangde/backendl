@@ -1,11 +1,16 @@
 import db from "./db/db.js";
-import express from "express"
-const app = express()
+import { app } from "./app.js";
+
 const port = process.env.PORT || 8000
 
+// database
 db()
-
-
-app.listen(port, ()=>{
-    console.log(`Server is listening at http://localhost:${port}`)
+.then(()=>{
+    app.listen(port, ()=>{
+        console.log(`Server is runnin at http://localhost:${port}`)
+    })
 })
+.catch((err)=>{
+    console.log("Database connection error", err.message)
+})
+
