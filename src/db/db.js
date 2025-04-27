@@ -3,8 +3,10 @@ process.loadEnvFile();
 
 const db = async () => {
   try {
-    const connectionInstance = await mongoose.connect(`${process.env.DATABASE_URL}`);
-    console.log("Database is connected at :", connectionInstance.connection.host);
+    const connectionInstance = await mongoose.connect(
+      `${process.env.DATABASE_URL}`
+    );
+    console.log("Database is connected at", connectionInstance.connection.host);
   } catch (error) {
     console.log(error.message);
     process.exit(1);
